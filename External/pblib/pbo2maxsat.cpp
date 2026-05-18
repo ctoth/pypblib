@@ -2,7 +2,10 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>  
-#include <sys/resource.h> 
+#ifndef _WIN32
+#include <sys/resource.h>
+#include <sys/time.h>
+#endif
 
 // PBLib
 // #include "incpbconstraint.h"
@@ -10,7 +13,6 @@
 #include "PBParser.h"
 #include "pb2cnf.h"
 #include "VectorClauseDatabase.h"
-#include <sys/time.h>  
 
 
 using namespace std;
@@ -119,7 +121,6 @@ int main(int argc, char **argv)
   
   return 0;
 }
-
 
 
 
