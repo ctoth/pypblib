@@ -264,7 +264,14 @@ void AdderEncoding::encode(const shared_ptr< IncSimplePBConstraint >& pbconstrai
 
 int PBLib::ld64(const uint64_t x)
 {
-  return (sizeof(uint64_t) << 3) - __builtin_clzll (x);
+  int bits = 0;
+  uint64_t value = x;
+  while (value > 0)
+  {
+    ++bits;
+    value >>= 1;
+  }
+  return bits;
 //   cout << "x " << x << endl;
 //   int ldretutn = 0;
 //   for (int i = 0; i < 63; ++i)
